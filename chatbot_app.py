@@ -7,16 +7,42 @@ st.set_page_config(page_title="AI Business KPI Chatbot", layout="wide")
 
 st.title("🤖 AI Business KPI Recommendation System")
 
-# -------------------------------
-# Load Data
-# -------------------------------
-@st.cache_data
-def load_data():
-    df = pd.read_csv("https://raw.githubusercontent.com/manasjadhav0086/AI-Business-KPI-recommendation-system/refs/heads/main/Bussiness_data.csv")
-    return df
+# -------------------------------------------------
+# DATABASE CONNECTION (COMMENTED FOR STREAMLIT CLOUD)
+# -------------------------------------------------
 
-data = load_data()
+# username = "root"
+# password = "Manas0086"
+# host = "localhost"
+# database = "ai_business_kpi"
 
+# engine = create_engine(
+#     f"mysql+pymysql://{username}:{password}@{host}/{database}"
+# )
+
+# -------------------------------------------------
+# LOAD DATA FROM CSV (GitHub)
+# -------------------------------------------------
+
+csv_url = "https://raw.githubusercontent.com/manasjadhav0086/AI-Business-KPI-recommendation-system/main/Bussiness_data.csv"
+
+data = pd.read_csv(csv_url)
+
+# Rename columns so rest of code works without change
+data = data.rename(columns={
+    "Order_Date": "date",
+    "Product": "product",
+    "Region": "region",
+    "Revenue": "revenue"
+})
+
+data["date"] = pd.to_datetime(data["date"])
+
+# -------------------------------------------------
+# FORECAST DATA (optional fallback if DB not used)
+# -------------------------------------------------
+
+forecast = pd.DataFrame()
 # -------------------------------
 # Convert Date
 # -------------------------------
@@ -194,4 +220,5 @@ fig = px.bar(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
 
