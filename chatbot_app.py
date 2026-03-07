@@ -12,7 +12,7 @@ st.title("🤖 AI Business KPI Recommendation System")
 # -------------------------------
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/processed_business_data.csv")
+    df = pd.read_csv("https://raw.githubusercontent.com/manasjadhav0086/AI-Business-KPI-recommendation-system/refs/heads/main/Bussiness_data.csv")
     return df
 
 data = load_data()
@@ -194,3 +194,4 @@ fig = px.bar(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
