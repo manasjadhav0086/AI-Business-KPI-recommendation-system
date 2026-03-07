@@ -1,15 +1,3 @@
-Manas, for a **15 LPA target**, your GitHub README should look like a **product page**, not just a description. Recruiters and hiring managers usually spend **30–60 seconds scanning** a repo, so the README must quickly show:
-
-* Problem
-* Architecture
-* Business value
-* Technologies
-* Live demo
-
-Below is a **recruiter-magnet README** you can directly use.
-
----
-
 # 🚀 AI-Powered Business KPI Recommendation Platform
 
 An end-to-end **AI analytics platform** that automatically analyzes business KPIs, detects anomalies, forecasts revenue, and generates actionable insights for executives.
