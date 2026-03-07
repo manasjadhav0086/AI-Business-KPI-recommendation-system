@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
 
-# ------------------------------------------------
+# -------------------------------------------------
 # PAGE CONFIG
 # -------------------------------------------------
 st.set_page_config(
@@ -345,4 +345,5 @@ elif page == "AI Chatbot":
         response = answer_question(question)
 
         st.success(response)
+
 
