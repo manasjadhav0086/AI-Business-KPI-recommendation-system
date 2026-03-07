@@ -48,23 +48,29 @@ st.markdown("""
 # -------------------------------------------------
 # DATABASE CONNECTION
 # -------------------------------------------------
-username = "root"
-password = "Manas0086"
-host = "localhost"
-database = "ai_business_kpi"
+# username = "root"
+# password = "Manas0086"
+# host = "localhost"
+# database = "ai_business_kpi"
 
-engine = create_engine(
-    f"mysql+pymysql://{username}:{password}@{host}/{database}"
-)
+# engine = create_engine(
+#    f"mysql+pymysql://{username}:{password}@{host}/{database}"
+#)
 
 # -------------------------------------------------
 # LOAD DATA
 # -------------------------------------------------
-data = pd.read_sql("SELECT * FROM processed_business_data", engine)
-forecast = pd.read_sql("SELECT * FROM revenue_forecast", engine)
+#data = pd.read_sql("SELECT * FROM processed_business_data", engine)
+#forecast = pd.read_sql("SELECT * FROM revenue_forecast", engine)
+
+@st.cache_data
+def load_data():
+    df = pd.read_csv("https://raw.githubusercontent.com/manasjadhav0086/AI-Business-KPI-recommendation-system/refs/heads/main/Bussiness_data.csv")
+    return df
+
+data = load_data()
 
 data["date"] = pd.to_datetime(data["date"])
-
 # -------------------------------------------------
 # SIDEBAR
 # -------------------------------------------------
@@ -327,5 +333,6 @@ elif page == "AI Chatbot":
     if question:
 
         response = answer_question(question)
+
 
         st.success(response)
