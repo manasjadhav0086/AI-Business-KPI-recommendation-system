@@ -11,7 +11,7 @@ from src.kpi_recommender import generate_recommendation
 from src.db_connection import get_connection
 
 
-print("\nStarting AI Business KPI Pipeline...\n")
+print("\nStarting InsightIQ Business KPI Pipeline...\n")
 
 # -------------------------------------------------
 # 1️⃣ Load data from MySQL

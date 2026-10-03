@@ -8,38 +8,43 @@ pd.set_option("styler.render.max_elements", 5000000)
 
 # Page Configuration
 st.set_page_config(
-    page_title="AI Business Intelligence Platform",
+    page_title="InsightIQ - AI Decision Intelligence Platform",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # Custom Enterprise CSS Styling (Power BI / Tableau Style)
+# Custom Enterprise CSS Styling (Power BI / Tableau Style)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
+    h1, h2, h3, h4, .hero-title, .kpi-value, .brand-title {
+        font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
     /* Mode Status Banner */
     .mode-banner-demo {
-        background: rgba(59, 130, 246, 0.12);
-        border: 1px solid rgba(59, 130, 246, 0.35);
+        background: rgba(59, 130, 246, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.28);
         border-radius: 10px;
-        padding: 12px 18px;
-        margin-bottom: 16px;
+        padding: 10px 16px;
+        margin-bottom: 14px;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
     .mode-banner-custom {
-        background: rgba(16, 185, 129, 0.12);
-        border: 1px solid rgba(16, 185, 129, 0.35);
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.28);
         border-radius: 10px;
-        padding: 12px 18px;
-        margin-bottom: 16px;
+        padding: 10px 16px;
+        margin-bottom: 14px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -50,40 +55,42 @@ st.markdown("""
         background: #1E293B;
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 12px;
-        padding: 14px 18px 8px 18px;
-        margin-bottom: 16px;
+        padding: 12px 18px 6px 18px;
+        margin-bottom: 14px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
     .slicer-header {
-        font-size: 12px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 11px;
         font-weight: 700;
         color: #94A3B8;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 8px;
+        letter-spacing: 0.8px;
+        margin-bottom: 6px;
     }
 
     /* Enterprise Hero Banner */
     .hero-banner {
         background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 14px;
-        padding: 18px 22px;
-        margin-bottom: 18px;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 16px;
+        box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.25);
     }
     .hero-title {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 800;
         color: #F8FAFC;
-        margin-bottom: 4px;
-        letter-spacing: -0.5px;
+        margin-bottom: 3px;
+        letter-spacing: -0.4px;
+        line-height: 1.25;
     }
     .hero-subtitle {
         font-size: 13px;
         color: #94A3B8;
         font-weight: 400;
-        line-height: 1.4;
+        line-height: 1.45;
     }
 
     /* KPI Metric Cards */
@@ -91,7 +98,7 @@ st.markdown("""
         background: #1E293B;
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 12px;
-        padding: 18px 20px;
+        padding: 16px 18px;
         text-align: left;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         transition: transform 0.2s ease, border-color 0.2s ease;
@@ -101,37 +108,37 @@ st.markdown("""
         border-color: rgba(59, 130, 246, 0.5);
     }
     .kpi-label {
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 11px;
+        font-weight: 700;
         color: #94A3B8;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
         margin-bottom: 4px;
     }
     .kpi-value {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 800;
         color: #F8FAFC;
-        letter-spacing: -0.5px;
-        line-height: 1.1;
+        letter-spacing: -0.6px;
+        line-height: 1.15;
     }
     .kpi-delta-positive {
         color: #10B981;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 600;
-        margin-top: 6px;
+        margin-top: 5px;
     }
     .kpi-delta-negative {
         color: #EF4444;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 600;
-        margin-top: 6px;
+        margin-top: 5px;
     }
     .kpi-delta-neutral {
         color: #64748B;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 500;
-        margin-top: 6px;
+        margin-top: 5px;
     }
 
     /* Structured AI Briefing Container */
@@ -139,24 +146,26 @@ st.markdown("""
         background: #1E293B;
         border: 1px solid rgba(59, 130, 246, 0.3);
         border-radius: 12px;
-        padding: 18px 22px;
-        margin-bottom: 18px;
+        padding: 16px 20px;
+        margin-bottom: 16px;
     }
     .ai-metric-pill {
         background: #0F172A;
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 8px;
-        padding: 10px 14px;
+        padding: 8px 12px;
         text-align: center;
     }
     .ai-metric-pill-label {
-        font-size: 11px;
+        font-size: 10px;
         color: #94A3B8;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
+        letter-spacing: 0.6px;
     }
     .ai-metric-pill-value {
-        font-size: 18px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 16px;
         color: #F8FAFC;
         font-weight: 800;
         margin-top: 2px;
@@ -167,33 +176,37 @@ st.markdown("""
         background: #1E293B;
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 10px;
-        padding: 16px;
-        margin-bottom: 12px;
+        padding: 14px 16px;
+        margin-bottom: 10px;
     }
 
     /* Chat styling */
     .user-bubble {
         background: #2563EB;
         color: white;
-        padding: 12px 16px;
+        padding: 11px 15px;
         border-radius: 12px 12px 2px 12px;
-        margin: 8px 0;
+        margin: 6px 0;
         display: inline-block;
         max-width: 80%;
         float: right;
         clear: both;
+        font-size: 13.5px;
+        line-height: 1.45;
     }
     .assistant-bubble {
         background: #1E293B;
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: #E2E8F0;
-        padding: 14px 18px;
+        padding: 13px 17px;
         border-radius: 12px 12px 12px 2px;
-        margin: 8px 0;
+        margin: 6px 0;
         display: inline-block;
         max-width: 85%;
         float: left;
         clear: both;
+        font-size: 13.5px;
+        line-height: 1.5;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -255,12 +268,17 @@ if "chat_history" not in st.session_state:
 # ---------------------------------------------------------
 with st.sidebar:
     st.markdown("""
-    <div style='padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 12px;'>
-        <div style='display: flex; align-items: center; gap: 8px;'>
-            <span style='font-size: 24px;'>📊</span>
+    <div style='padding: 12px 14px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.25);'>
+        <div style='display: flex; align-items: center; gap: 11px;'>
+            <div style='width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); font-size: 19px;'>
+                📊
+            </div>
             <div>
-                <h3 style='margin: 0; color: #3B82F6; font-size: 17px; font-weight: 800;'>DECISION AI</h3>
-                <p style='margin: 0; color: #94A3B8; font-size: 11px; font-weight: 500;'>Self-Service BI Platform</p>
+                <div style='display: flex; align-items: center; gap: 6px;'>
+                    <span style='font-family: "Plus Jakarta Sans", sans-serif; font-size: 18px; font-weight: 800; background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.4px;'>InsightIQ</span>
+                    <span style='background: rgba(59, 130, 246, 0.2); color: #93C5FD; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 5px; border: 1px solid rgba(59, 130, 246, 0.35); letter-spacing: 0.5px;'>PRO</span>
+                </div>
+                <p style='margin: 2px 0 0 0; color: #94A3B8; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px;'>Decision Intelligence</p>
             </div>
         </div>
     </div>
@@ -605,8 +623,12 @@ if navigation_page == "🏠 Executive & Performance":
 # VIEW 2: 📦 PRODUCT & REGIONAL HUB
 # =========================================================
 elif navigation_page == "📦 Product & Regional Hub":
-    st.markdown("## 📦 Product & Geographic Intelligence Hub")
-    st.markdown("Evaluate category Pareto concentration, regional market share, and ticket size distributions.")
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-title">Product & Geographic Intelligence Hub</div>
+        <div class="hero-subtitle">Evaluate product Pareto 80/20 concentration, regional market share, and ticket size distributions.</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     prod_analysis = get_product_analysis(filtered_df)
     reg_analysis = get_regional_analysis(filtered_df)
@@ -681,8 +703,12 @@ elif navigation_page == "📦 Product & Regional Hub":
 # VIEW 3: 📈 FORECAST & ANOMALY CENTER
 # =========================================================
 elif navigation_page == "📈 Forecast & Anomaly Center":
-    st.markdown("## 📈 Forward Forecasting & Anomaly Incident Center")
-    st.markdown("Prophet time-series demand forecasting with confidence intervals and statistical Z-score anomaly incident detection.")
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-title">Forward Forecasting & Anomaly Incident Center</div>
+        <div class="hero-subtitle">Prophet time-series demand forecasting with confidence intervals and statistical Z-score anomaly incident detection.</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     tab_fc, tab_anom = st.tabs(["🔮 Revenue Forecasting (Prophet)", "🚨 Anomaly Incident Detection"])
 
@@ -728,8 +754,12 @@ elif navigation_page == "📈 Forecast & Anomaly Center":
 # VIEW 4: 🤖 AI BUSINESS ANALYST (Chat)
 # =========================================================
 elif navigation_page == "🤖 AI Business Analyst (Chat)":
-    st.markdown("## 🤖 AI Business Analyst Agent")
-    st.markdown("Ask natural language business questions. Powered by verified Python analytics & Groq LLM reasoning.")
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-title">InsightIQ AI Business Analyst Agent</div>
+        <div class="hero-subtitle">Ask natural language business questions powered by verified deterministic Python analytics & Groq LLM reasoning.</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     # Suggested Prompts Chips
     p_col1, p_col2, p_col3, p_col4 = st.columns(4)
@@ -795,8 +825,12 @@ elif navigation_page == "🤖 AI Business Analyst (Chat)":
 # VIEW 5: 🔎 DATA EXPLORER & QUALITY
 # =========================================================
 elif navigation_page == "🔎 Data Explorer & Quality":
-    st.markdown("## 🔎 Data Quality Audit & Interactive Explorer")
-    st.markdown("Audit data integrity, completeness, and export filtered datasets and reports.")
+    st.markdown("""
+    <div class="hero-banner">
+        <div class="hero-title">Data Quality Audit & Interactive Explorer</div>
+        <div class="hero-subtitle">Audit transactional data integrity, completeness, freshness, and export verified filtered reports.</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     tab_exp, tab_dq, tab_dl = st.tabs(["📋 Filtered Data Explorer", "🛡️ Data Quality Audit", "📥 1-Click Exports"])
 

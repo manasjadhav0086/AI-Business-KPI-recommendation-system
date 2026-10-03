@@ -1,5 +1,5 @@
 """
-AI Business Intelligence Platform - Entrypoint
+InsightIQ - AI Decision Intelligence Platform - Entrypoint
 Preserves backward compatibility for `streamlit run chatbot_app.py`
 """
 import runpy

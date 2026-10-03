@@ -440,7 +440,7 @@ def process_agent_chat(
 
     # 4. Formulate LLM Prompt with Grounded Facts
     system_prompt = """
-You are an expert AI Business Intelligence Analyst.
+You are InsightIQ's expert AI Business Intelligence Analyst.
 Analyze the provided verified business metrics.
 
 CRITICAL RULES:
