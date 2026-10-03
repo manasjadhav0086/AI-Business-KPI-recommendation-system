@@ -26,14 +26,16 @@ print(df.head())
 # -------------------------------------------------
 # 2️⃣ Save processed dataset
 # -------------------------------------------------
-engine = get_connection()
-
-df.to_sql(
-    "processed_business_data",
-    engine,
-    if_exists="replace",
-    index=False
-)
+try:
+    engine = get_connection()
+    df.to_sql(
+        "processed_business_data",
+        engine,
+        if_exists="replace",
+        index=False
+    )
+except Exception as e:
+    print(f"Notice: Could not write processed_business_data to MySQL ({e}).")
 
 
 # -------------------------------------------------
@@ -81,12 +83,16 @@ anomaly_df.to_csv(
     index=False
 )
 
-anomaly_df.to_sql(
-    "ai_anomaly_explanations",
-    engine,
-    if_exists="replace",
-    index=False
-)
+try:
+    engine = get_connection()
+    anomaly_df.to_sql(
+        "ai_anomaly_explanations",
+        engine,
+        if_exists="replace",
+        index=False
+    )
+except Exception as e:
+    print(f"Notice: Could not write ai_anomaly_explanations to MySQL ({e}).")
 
 
 # -------------------------------------------------
@@ -151,14 +157,18 @@ result_df.to_csv(
     index=False
 )
 
-result_df.to_sql(
-    "ai_business_recommendations",
-    engine,
-    if_exists="replace",
-    index=False
-)
+try:
+    engine = get_connection()
+    result_df.to_sql(
+        "ai_business_recommendations",
+        engine,
+        if_exists="replace",
+        index=False
+    )
+except Exception as e:
+    print(f"Notice: Could not write ai_business_recommendations to MySQL ({e}).")
 
 
 print("\nPipeline Completed Successfully")
 print("\nOutputs saved to:")
-print("outputs/ folder and MySQL tables")
+print("outputs/ folder (and MySQL if active)")

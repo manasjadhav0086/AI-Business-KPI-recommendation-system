@@ -59,12 +59,16 @@ st.markdown("""
 # )
 
 # -------------------------------------------------
-# LOAD DATA FROM CSV (GitHub)
+# LOAD DATA FROM LOCAL CSV OR GITHUB
 # -------------------------------------------------
+import os
 
 csv_url = "https://raw.githubusercontent.com/manasjadhav0086/AI-Business-KPI-recommendation-system/main/Bussiness_data.csv"
 
-data = pd.read_csv(csv_url)
+if os.path.exists("Bussiness_data.csv"):
+    data = pd.read_csv("Bussiness_data.csv")
+else:
+    data = pd.read_csv(csv_url)
 
 # Rename columns so rest of code works without change
 data = data.rename(columns={
@@ -77,10 +81,14 @@ data = data.rename(columns={
 data["date"] = pd.to_datetime(data["date"])
 
 # -------------------------------------------------
-# FORECAST DATA (optional fallback if DB not used)
+# FORECAST DATA (Load from generated outputs if present)
 # -------------------------------------------------
 
-forecast = pd.DataFrame()
+forecast_file = "outputs/forecast_data.csv"
+if os.path.exists(forecast_file):
+    forecast = pd.read_csv(forecast_file)
+else:
+    forecast = pd.DataFrame()
 # -------------------------------------------------
 # SIDEBAR
 # -------------------------------------------------

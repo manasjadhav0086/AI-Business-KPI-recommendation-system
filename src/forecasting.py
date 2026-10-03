@@ -41,13 +41,15 @@ def revenue_forecast(df):
     forecast.to_csv("outputs/forecast_data.csv", index=False)
 
     # Save to MySQL
-    engine = get_connection()
-
-    forecast.to_sql(
-        "revenue_forecast",
-        engine,
-        if_exists="replace",
-        index=False
-    )
+    try:
+        engine = get_connection()
+        forecast.to_sql(
+            "revenue_forecast",
+            engine,
+            if_exists="replace",
+            index=False
+        )
+    except Exception as e:
+        print(f"Notice: Could not write revenue_forecast to MySQL ({e}). Saved to CSV.")
 
     return forecast

@@ -22,13 +22,15 @@ def detect_anomalies(df):
     # Save anomalies
     anomalies.to_csv("outputs/anomaly_data.csv", index=False)
 
-    engine = get_connection()
-
-    anomalies.to_sql(
-        "revenue_anomalies",
-        engine,
-        if_exists="replace",
-        index=False
-    )
+    try:
+        engine = get_connection()
+        anomalies.to_sql(
+            "revenue_anomalies",
+            engine,
+            if_exists="replace",
+            index=False
+        )
+    except Exception as e:
+        print(f"Notice: Could not write revenue_anomalies to MySQL ({e}). Saved to CSV.")
 
     return anomalies
