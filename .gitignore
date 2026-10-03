@@ -8,3 +8,4 @@ outputs/
 *.pyc
 .ipynb_checkpoints/
 .DS_Store
+*interview_prep*

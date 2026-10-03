@@ -37,6 +37,20 @@ def load_data():
         return df_final
 
     except Exception as e:
+        if os.path.exists("Retail data.xlsx"):
+            print(f"Notice: MySQL not reachable ({e}). Loading 'Retail data.xlsx'.")
+            df_final = pd.read_excel("Retail data.xlsx", sheet_name="Raw Sales Data")
+            df_final = df_final.rename(columns={
+                "Order Date": "date",
+                "Category": "product",
+                "Region": "region",
+                "Sales Amount": "revenue",
+                "Profit Amount": "profit",
+                "Quantity": "quantity"
+            })
+            df_final["date"] = pd.to_datetime(df_final["date"]).dt.normalize()
+            df_final["month"] = df_final["date"].dt.to_period("M")
+            return df_final
         csv_path = "Bussiness_data.csv"
         if os.path.exists(csv_path):
             print(f"Notice: MySQL not reachable ({e}). Falling back to local '{csv_path}'.")
